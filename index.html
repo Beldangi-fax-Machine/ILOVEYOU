@@ -1,43 +1,78 @@
-<!DOCTYPE html> <!-- THIS IS A COMMENT -->
-<html>
-
-
-<div><!-- /TOP BAR|MAIN PAGE\-->
-
-  <head> <!--Holder; WEBTITLE, Style.css -->
-    <title>ILOVEYOU</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
-  </head>
-  <body><!--holder; OB-SOUL, Stars, Java.js-->
-    <h1 id="obsool">Song of Solomon 8:6–7</h1>
-    <div id="stars-container"></div>
-    <script src="script.js"></script>
-  </body>
-
-</div>
-
-<div><!--Button-->
-  <button onclick="openFile()">---</button>
-  <script>
-    function openFile() {
-      window.open("st.html", "_blank");
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GIFs Galore</title>
+  <style>
+    body {
+      overflow: hidden;
+      margin: 0;
+      cursor: default;
     }
+    .gif {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background: url('heart.gif') no-repeat center center;
+      background-size: cover;
+      animation: fall 5s infinite linear;
+    }
+    @keyframes fall {
+      to {
+        transform: translateY(100vh);
+      }
+    }
+  </style>
+</head>
+<body>
+  <script>
+    function createGif() {
+      const gif = document.createElement('div');
+      gif.className = 'gif';
+      gif.style.left = Math.random() * window.innerWidth + 'px';
+      document.body.appendChild(gif);
+    }
+
+    // Call createGif function to spawn GIFs every 500 milliseconds
+    setInterval(createGif, 40);
   </script>
 
-  
+<style>
+  .text-container {
+    position: relative;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+  }
+
+  .glow-text {
+    color: rgba(255, 70, 181, 0.8);
+    font-size: 3em;
+    font-weight: bold;
+   
+    top:100;
+    left: 100;
+    z-index: 1;
+    text-shadow: 0 0 10px rgba(255, 70, 181, 0.8), 0 0 20px rgba(255, 70, 181, 0.8), 0 0 30px rgba(255, 70, 181, 0.8);
+  }
+
+  .background-text {
+    color: transparent;
+    font-size: 3em;
+    font-weight: bold;
+   
+    top:100;
+    left: 100;
+    z-index: 0;
+    -webkit-filter: blur(10px);
+    filter: blur(10px);
+  }
+</style>
+
+<div class="text-container">
+  <div class="glow-text">I love you</div>
+  <div class="background-text">I love you</div>
 </div>
-  
-<div><!-- Favicon placement/// DOES NOT WORK FUCK THIS SHI-->
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
-  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-</div>
 
-<div><!-- Footer/BottomTags-->
-
-
-  
-</div>
-
-
-
+</body>
 </html>
