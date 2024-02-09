@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Page</title>
+    <style>
+        body {
+            background-color: #fff; /* Set background color to white */
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Hide overflow to prevent scrollbars */
+        }
+
+        .container {
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 999;
+            pointer-events: none; /* Allow clicks to go through the container */
+        }
+
+        img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .heart {
+            position: absolute;
+            animation: fall 5s linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-50vh);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(100vh);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <img src="istockphoto-607259848-1024x1024.jpg" alt="Happy Gif">
+    </div>
+
+    <script>
+        // Function to create heart images and make them fall
+        function createHearts() {
+            const container = document.querySelector('.container');
+            const heartCount = 20; // Number of hearts
+
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement('img');
+                heart.src = 'heart.png'; // Heart image source
+                heart.classList.add('heart');
+
+                // Randomize position and size of heart images
+                const randomX = Math.random() * window.innerWidth;
+                const randomY = Math.random() * -50; // Above the viewport
+                const randomSize = Math.random() * 50 + 20; // Random size between 20 and 70 pixels
+                const randomDelay = Math.random() * 5; // Random delay for animation start
+
+                // Apply styles
+                heart.style.left = `${randomX}px`;
+                heart.style.top = `${randomY}px`;
+                heart.style.width = `${randomSize}px`;
+                heart.style.height = 'auto';
+                heart.style.animationDelay = `${randomDelay}s`;
+
+                // Append heart to container
+                container.appendChild(heart);
+            }
+        }
+
+        // Call function to create hearts when the page is loaded
+        window.onload = createHearts;
+    </script>
+</body>
+</html>

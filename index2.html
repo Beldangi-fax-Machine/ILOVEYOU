@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will you be my valentine?</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .hearts {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+        }
+
+        .heart-img {
+            width: 50px; /* adjust the size of the heart image */
+            height: auto;
+            position: absolute;
+            animation: heart 1s ease-out infinite;
+        }
+
+        @keyframes heart {
+            0% {
+                transform: scale(1) translateY(0) rotate(45deg);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(0.3) translateY(-300px) rotate(45deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Will you be my Valentine?</h1>
+        <form action="sad.html">
+            <input type="submit" value="No">
+        </form>
+        <form action="happy.html">
+            <input type="submit" value="Yes" id="yesButton">
+        </form>
+    </div>
+
+    <div class="hearts" id="hearts">
+        <img src="heart.png" alt="heart" class="heart-img">
+    </div>
+
+    <script>
+        const heartsContainer = document.getElementById('hearts');
+        const yesButton = document.getElementById('yesButton');
+
+        yesButton.addEventListener('mouseenter', () => {
+            heartsContainer.style.display = 'block';
+        });
+
+        yesButton.addEventListener('mouseleave', () => {
+            heartsContainer.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
